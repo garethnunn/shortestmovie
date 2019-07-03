@@ -1,9 +1,90 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
 <h1>
     Deployed in Azure as Docker TEST AGAIN
 </h1>
+
+<div id="vue-app">
+    <input v-model="searchQuery" v-on:keyup='searchChange' />
+
+    <div class="searchresults">
+        <searchresult v-for="searchResultItem in searchResults"
+                      v-bind:result="searchResultItem"
+                      v-bind:key="searchResultItem.id"></searchresult>
+    </div>   
+    <p>
+        {{message}}
+    </p>
+</div>
+
+<script src="~/vue/app.js" asp-append-version="true" type="text/javascript" ></script>
+
+<script>
+    /*
+    window.onload = function () {
+        var message = "";
+        const Http = new XMLHttpRequest();
+       // Http.open("GET", "https://api.themoviedb.org/3/search/movie?api_key=d6f12ddc103a301a347006b8083d3626&query=Avengers");
+        Http.send();
+
+        Http.onreadystatechange = (e) => {
+       //     message = Http.responseText;
+        }
+
+        // Define a new component called button-counter
+Vue.component('button-counter', {
+  data: function () {
+    return {
+      count: 0
+    }
+  },
+  template: '<button v-on:click="count++">You clicked me {{ count }} times.</button>'
+})
+
+        var app = new Vue({
+            el: '#app',
+            components: {
+    'button-counter': ComponentA,
+    'component-b': ComponentB
+  }
+        });
+    }
+    */
+</script>
+
+<style>
+    .autocomplete {
+        position: relative;
+        width: 130px;
+    }
+
+    .autocomplete-results {
+        padding: 0;
+        margin: 0;
+        border: 1px solid #eeeeee;
+        height: 120px;
+        overflow: auto;
+    }
+
+    .autocomplete-result {
+        list-style: none;
+        text-align: left;
+        padding: 4px 2px;
+        cursor: pointer;
+    }
+
+        .autocomplete-result:hover {
+            background-color: #4AAE9B;
+            color: white;
+        }
+</style>
+
+
+
 <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="6000">
     <ol class="carousel-indicators">
         <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -94,3 +175,5 @@
         </ul>
     </div>
 </div>
+
+

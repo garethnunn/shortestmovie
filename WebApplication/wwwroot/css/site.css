@@ -35,3 +35,10 @@ body {
         display: none;
     }
 }
+
+
+input {
+    width: 100%;
+    padding: 0 2% 0 2%;
+    height: 50px;
+}
