@@ -1,7 +1,7 @@
 ﻿
 Vue.component('searchresult', {
     props: ['result'],
-    template: '<div class="searchresults" >{{ result.title }} {{ result.runtime }} minutes</div>'
+    template: '<div class="searchresult" >{{ result.title }} {{ result.runtime }} minutes</div>'
 })
 
 var app7 = new Vue({
