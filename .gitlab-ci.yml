@@ -1,0 +1,20 @@
+image: microsoft/dotnet:latest
+
+stages:
+  - build
+  - test
+
+variables:
+  project: "WebApplication"
+
+before_script:
+  - "dotnet restore"
+
+build:
+  stage: build
+  variables:
+    build_path: "$project/WebApplication/"
+  script:
+    - "cd $build_path"
+    - "dotnet build"
+
