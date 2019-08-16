@@ -13,7 +13,7 @@ before_script:
 build:
   stage: build
   variables:
-    build_path: "$project/WebApplication/"
+    build_path: "$project"
   script:
     - "cd $build_path"
     - "dotnet build"
