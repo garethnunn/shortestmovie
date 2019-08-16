@@ -29,4 +29,4 @@ deploy:
     - "cd $deploy_path"
     - "dotnet publish -c release"
     - "apt-get update -qq && apt-get install -y -qq lftp"
-    - "lftp -e \"mirror -R $publishdir $remotedir\" -u $ftpusername,$ftppassword $ftphost"
+    - "lftp set ssl:verify-certificate false -e \"mirror -R $publishdir $remotedir\" -u $ftpusername,$ftppassword $ftphost"
