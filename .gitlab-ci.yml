@@ -2,11 +2,15 @@ image: microsoft/dotnet:latest
 
 stages:
   - build
-  - test
+  - deploy
 
 variables:
   project: "WebApplication"
-
+  remotedir: "shortestmovie"
+  ftphost: "ftp-eu.site4now.net"
+  ftpusername: "gazerith-001"
+  ftppassword: "rbjjv69dpd"
+  
 before_script:
   - "dotnet restore"
 
@@ -17,4 +21,12 @@ build:
   script:
     - "cd $build_path"
     - "dotnet build"
-
+deploy:
+  stage: deploy
+  variables:
+    deploy_path: "$project"
+  script:
+    - "cd $deploy_path"
+    - "dotnet publish -c release"
+    - "- apt-get update -qq && apt-get install -y -qq lftp"
+    - "lftp -e \"mirror -R $publishdir $remotedir\" -u $ftpusername,$ftppassword $ftphost"
